@@ -1,0 +1,409 @@
+# Python program for implementation of Selection
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_idx = i
+        
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+              
+                min_idx = j
+        
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+def print_array(arr):
+    for val in arr:
+        print(val, end=" ")
+    print()
+
+if __name__ == "__main__":
+    arr = [64, 25, 12, 22, 11]
+    
+    print("Original array: ", end="")
+    print_array(arr)
+    
+    selection_sort(arr)
+    
+    print("Sorted array: ", end="")
+    print_array(arr)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#  Python program for implementation of Bubble Sort
+def bubbleSort(arr):
+    n = len(arr)
+    
+    for i in range(n):
+        swapped = False
+
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+        if (swapped == False):
+            break
+
+if __name__ == "__main__":
+    arr = [64, 34, 25, 12, 22, 11, 90]
+
+    bubbleSort(arr)
+
+    print("Sorted array:")
+    for i in range(len(arr)):
+        print("%d" % arr[i], end=" ")
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Python code to linearly search
+
+def search(arr, N, x):
+
+    for i in range(0, N):
+        if (arr[i] == x):
+            return i
+    return -1
+
+
+# Driver Code
+if __name__ == "__main__":
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+    N = len(arr)
+
+    # Function call
+    result = search(arr, N, x)
+    if(result == -1):
+        print("Element is not present in array")
+    else:
+        print("Element is present at index", result)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Python code to implement iterative Binary
+
+def binarySearch(arr, low, high, x):
+
+    while low <= high:
+
+        mid = low + (high - low) // 2
+
+        if arr[mid] == x:
+            return mid
+
+        elif arr[mid] < x:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+            
+    return -1
+
+
+
+if __name__ == '__main__':
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+
+    # Function call
+    result = binarySearch(arr, 0, len(arr)-1, x)
+    if result != -1:
+        print("Element is present at index", result)
+    else:
+        print("Element is not present in array")
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#AVL TREE
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+        self.height = 1
+
+
+class AVLTree:
+    def __init__(self):
+        self.root = None
+
+    def height(self, node):
+        if not node:
+            return 0
+        return node.height
+
+    def balance(self, node):
+        if not node:
+            return 0
+        return self.height(node.left) - self.height(node.right)
+
+    def insert(self, root, value):
+        if not root:
+            return Node(value)
+        elif value < root.value:
+            root.left = self.insert(root.left, value)
+        else:
+            root.right = self.insert(root.right, value)
+
+        root.height = 1 + max(self.height(root.left), self.height(root.right))
+        balance = self.balance(root)
+
+        # Left rotation
+        if balance > 1 and value < root.left.value:
+            return self.right_rotate(root)
+
+        # Right rotation
+        if balance < -1 and value > root.right.value:
+            return self.left_rotate(root)
+
+        # Left-Right rotation
+        if balance > 1 and value > root.left.value:
+            root.left = self.left_rotate(root.left)
+            return self.right_rotate(root)
+
+        # Right-Left rotation
+        if balance < -1 and value < root.right.value:
+            root.right = self.right_rotate(root.right)
+            return self.left_rotate(root)
+
+        return root
+
+    def delete(self, root, value):
+        if not root:
+            return root
+
+        if value < root.value:
+            root.left = self.delete(root.left, value)
+        elif value > root.value:
+            root.right = self.delete(root.right, value)
+        else:
+            if not root.left:
+                temp = root.right
+                root = None
+                return temp
+            elif not root.right:
+                temp = root.left
+                root = None
+                return temp
+
+            temp = self.min_value_node(root.right)
+            root.value = temp.value
+            root.right = self.delete(root.right, temp.value)
+
+        if not root:
+            return root
+
+        root.height = 1 + max(self.height(root.left), self.height(root.right))
+        balance = self.balance(root)
+
+        # Left rotation
+        if balance > 1 and self.balance(root.left) >= 0:
+            return self.right_rotate(root)
+
+        # Right rotation
+        if balance < -1 and self.balance(root.right) <= 0:
+            return self.left_rotate(root)
+
+        # Left-Right rotation
+        if balance > 1 and self.balance(root.left) < 0:
+            root.left = self.left_rotate(root.left)
+            return self.right_rotate(root)
+
+        # Right-Left rotation
+        if balance < -1 and self.balance(root.right) > 0:
+            root.right = self.right_rotate(root.right)
+            return self.left_rotate(root)
+
+        return root
+
+    def left_rotate(self, z):
+        y = z.right
+        T2 = y.left
+
+        y.left = z
+        z.right = T2
+
+        z.height = 1 + max(self.height(z.left), self.height(z.right))
+        y.height = 1 + max(self.height(y.left), self.height(y.right))
+
+        return y
+
+    def right_rotate(self, z):
+        y = z.left
+        T3 = y.right
+
+        y.right = z
+        z.left = T3
+
+        z.height = 1 + max(self.height(z.left), self.height(z.right))
+        y.height = 1 + max(self.height(y.left), self.height(y.right))
+
+        return y
+
+    def min_value_node(self, root):
+        current = root
+        while current.left:
+            current = current.left
+        return current
+
+    def search(self, root, value):
+        if not root or root.value == value:
+            return root
+        if root.value < value:
+            return self.search(root.right, value)
+        return self.search(root.left, value)
+
+    def insert_value(self, value):
+        self.root = self.insert(self.root, value)
+
+    def delete_value(self, value):
+        self.root = self.delete(self.root, value)
+
+    def search_value(self, value):
+        return self.search(self.root, value)
+
+
+# Example usage:
+if __name__ == "__main__":
+    tree = AVLTree()
+    tree.insert_value(10)
+    tree.insert_value(20)
+    tree.insert_value(30)
+    tree.insert_value(40)
+    tree.insert_value(50)
+
+    print("Tree after insertion:")
+    # In-order traversal to print the tree
+    def inorder_traversal(root):
+        if root:
+            inorder_traversal(root.left)
+            print(root.value),
+            inorder_traversal(root.right)
+
+    inorder_traversal(tree.root)
+    print()
+
+    tree.delete_value(20)
+    print("Tree after deletion of 20:")
+    inorder_traversal(tree.root)
+    print()
+
+    result = tree.search_value(30)
+    if result:
+        print("Node found")
+    else:
+        print("Node not found")
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#BST
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, value):
+        if not self.root:
+            self.root = Node(value)
+        else:
+            self._insert(value, self.root)
+
+    def _insert(self, value, node):
+        if value < node.value:
+            if node.left:
+                self._insert(value, node.left)
+            else:
+                node.left = Node(value)
+        elif value > node.value:
+            if node.right:
+                self._insert(value, node.right)
+            else:
+                node.right = Node(value)
+
+    def inorder_traversal(self):
+        result = []
+        self._inorder_traversal(self.root, result)
+        return result
+
+    def _inorder_traversal(self, node, result):
+        if node:
+            self._inorder_traversal(node.left, result)
+            result.append(node.value)
+            self._inorder_traversal(node.right, result)
+
+    def preorder_traversal(self):
+        result = []
+        self._preorder_traversal(self.root, result)
+        return result
+
+    def _preorder_traversal(self, node, result):
+        if node:
+            result.append(node.value)
+            self._preorder_traversal(node.left, result)
+            self._preorder_traversal(node.right, result)
+
+    def postorder_traversal(self):
+        result = []
+        self._postorder_traversal(self.root, result)
+        return result
+
+    def _postorder_traversal(self, node, result):
+        if node:
+            self._postorder_traversal(node.left, result)
+            self._postorder_traversal(node.right, result)
+            result.append(node.value)
+
+    def search(self, value):
+        return self._search(value, self.root)
+
+    def _search(self, value, node):
+        if not node:
+            return None
+        if value == node.value:
+            return node
+        if value < node.value:
+            return self._search(value, node.left)
+        return self._search(value, node.right)
+
+    def delete(self, value):
+        self.root = self._delete(value, self.root)
+
+    def _delete(self, value, node):
+        if not node:
+            return None
+        if value < node.value:
+            node.left = self._delete(value, node.left)
+        elif value > node.value:
+            node.right = self._delete(value, node.right)
+        else:
+            if not node.left and not node.right:
+                return None
+            elif not node.left:
+                return node.right
+            elif not node.right:
+                return node.left
+            # node has two children, find inorder successor
+            succ = self._min_value_node(node.right)
+            node.value = succ.value
+            node.right = self._delete(succ.value, node.right)
+        return node
+
+    def _min_value_node(self, node):
+        current = node
+        while current.left:
+            current = current.left
+        return current
+
+# Example usage:
+bst = BST()
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
+bst.insert(2)
+bst.insert(4)
+bst.insert(6)
+bst.insert(8)
+
+print(bst.inorder_traversal())  # [2, 3, 4, 5, 6, 7, 8]
+print(bst.preorder_traversal())  # [5, 3, 2, 4, 7, 6, 8]
+print(bst.postorder_traversal())  # [2, 4, 3, 6, 8, 7, 5]
+
+print(bst.search(4).value)  # 4
+print(bst.search(9))  # None
+
+bst.delete(4)
+print(bst.inorder_traversal())  # [2, 3, 5, 6, 7, 8]
