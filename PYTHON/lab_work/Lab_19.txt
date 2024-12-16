@@ -1,0 +1,522 @@
+
+# Single Inheritance
+
+class Animal:
+    def speak(self):
+        print("animal speaking")
+
+class Lion(Animal):
+    def roar(self):
+        print("lion roaring")
+
+d = Lion()
+d.roar()
+d.speak()
+lion roaring
+animal speaking
+# Multiple Inheritance
+
+class Calculation1:
+    def addition(self, x, y):
+        return x+y
+
+class Calculation2:
+    def multiplication(self, x, y):
+        return x*y
+
+class Derived(Calculation1, Calculation2):
+    def division(self, a, b):
+        return a/b
+
+d = Derived()
+print(d.addition(2, 4))
+print(d.multiplication(2, 4))
+print(d.division(2, 4))
+6
+8
+0.5
+# Multi-level inheritance
+
+class Animal:
+    def speak(self):
+        print("Animal speaking")
+
+class Lion(Animal):
+    def roar(self):
+        print("Lion roaring")
+
+class BabyLion(Lion):
+    def eat(self):
+        print("Eating meat...")
+
+d = BabyLion()
+d.roar()
+d.speak()
+d.eat()
+Lion roaring
+Animal speaking
+Eating meat...
+# Hybrid inheritance
+
+class Employee:
+    def __init__(self, name, emp_id):
+        self.name = name
+        self.emp_id = emp_id
+    def display_info(self):
+        return f'Name: {self.name}, ID: {self.emp_id}'
+
+class Manager:
+    def manage_team(self):
+        return "Managing team tasks"
+
+class Developer(Manager):
+    def write_code(self):
+        return "Writing code"
+
+class SalesExecutive(Employee, Manager):
+    def handle_clients(self):
+        print("Handling client meetings")
+
+class QAEngineer(Employee, Developer):
+    def test_code(self):
+        return "Testing code"
+
+sales_exec = SalesExecutive("John Doe", "SE001")
+qa_engg = QAEngineer("Alice Smith", "QA001")
+
+print(sales_exec.display_info())
+print(sales_exec.manage_team())
+print(sales_exec.handle_clients())
+
+print(qa_engg.display_info())
+print(qa_engg.write_code())
+print(qa_engg.test_code())
+Name: John Doe, ID: SE001
+Managing team tasks
+Handling client meetings
+None
+Name: Alice Smith, ID: QA001
+Writing code
+Testing code
+# Polymorphism - Function Overloading
+
+# Python does not support method overloading
+
+def addition(a,b):
+    x = a+b
+    print(x)
+
+def addition(a,b, c):
+    x = a+b+c
+    print(x)
+
+addition(2, 5, 1)
+addition(7, 2)
+8
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[9], line 14
+     11     print(x)
+     13 addition(2, 5, 1)
+---> 14 addition(7, 2)
+
+TypeError: addition() missing 1 required positional argument: 'c'
+# Operator overloading
+
+print(3+2)
+
+print("GKTCS" + "Innovation")
+
+print(3*2)
+
+print("GKTCS" * 3)
+5
+GKTCSInnovation
+6
+GKTCSGKTCSGKTCS
+# Method Overriding
+
+class Employee:
+    def message(self):
+        print("In Employee Class")
+
+class Company(Employee):
+    pass
+        
+class Company2(Employee):
+    def message(self):
+        print("In Company class")
+
+emp = Employee()
+emp.message()
+
+comp = Company()
+comp.message()
+
+comp2 = Company2()
+comp2.message()
+In Employee Class
+In Employee Class
+In Company class
+# Encapsulation
+
+class ruff:
+    def __init__(self, x, y):
+        self.__a = x
+        self.__b = y
+
+obj = ruff(10, 20)
+print(obj.__a)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[21], line 9
+      6         self.__b = y
+      8 obj = ruff(10, 20)
+----> 9 print(obj.__a)
+
+AttributeError: 'ruff' object has no attribute '__a'
+# WAP that has a class Point. Define another class Location which has 2 objects - location and destination. 
+# Also define a function in location that prints the refelction of destination on the x-axis.
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.x_new = 0
+        self.y_new = 0
+    def display_point(self):
+        print(f'X = {self.x}, Y = {self.y}')
+
+class Location(Point):
+    def reflection(self):
+        self.y_new = self.y * -1
+        self.x_new = self.x
+        print(f'X_relected = {self.x_new}, Y_reflected = {self.y_new}')
+
+location = Location(1, 2)
+destination = Location(10, 20)
+
+location.display_point()
+destination.display_point()
+destination.reflection()
+X = 1, Y = 2
+X = 10, Y = 20
+X_relected = 10, Y_reflected = -20
+# Ma'am's answer
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def display_point(self):
+        return(f'X = {self.x}, Y = {self.y}')
+
+class Location:
+    def __init__(self, x1, y1, x2, y2):
+        self.source = Point(x1, y1)
+        self.dest = Point(x2, y2)
+    def show(self):
+        print("Source: ", self.source.display_point())
+        print("Destination: ", self.dest.display_point())
+    def reflection(self):
+        self.dest.x = self.dest.x * -1
+        print(f'Reflection on x-axis:\nX_relected = {self.dest.x}, Y_reflected = {self.dest.y}')
+
+destination = Location(10, 20, 30, 40)
+
+destination.show()
+destination.reflection()
+Source:  X = 10, Y = 20
+Destination:  X = 30, Y = 40
+Reflection on x-axis:
+X_relected = -30, Y_reflected = 40
+# WAP that has classes such as Student, Course, Department. Enroll a student in a course of a particular department. Classes are - 
+# Student details - name, roll no
+# Course -  name, code, year and semester
+# Department - Name
+
+class Department:
+    def __init__(self, name):
+        self.name = name
+    def enroll_student(self):
+        s1 = Student("Aarushi", "24901325")
+        s2 = Student("Nikhil", "24901315")
+
+class Student():
+    def __init__(self, name, roll_no):
+        self.name = name
+        self.roll_no = roll_no
+
+class Course(Department):
+    def __init__(self, name, code, year, sem):
+        self.name = name
+        self.code = code
+        self.year = year
+        self.sem = sem
+# Base class: Person
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"Name: {self.name}"
+
+
+# Student class inheriting from Person
+class Student(Person):
+    def __init__(self, name, roll_no):
+        super().__init__(name)
+        self.roll_no = roll_no
+
+    def __str__(self):
+        return f"Student Name: {self.name}, Roll No: {self.roll_no}"
+
+
+# Base class: AcademicEntity
+class AcademicEntity:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"{self.__class__.__name__} Name: {self.name}"
+
+
+# Course class inheriting from AcademicEntity
+class Course(AcademicEntity):
+    def __init__(self, name, code, year, semester):
+        super().__init__(name)
+        self.code = code
+        self.year = year
+        self.semester = semester
+
+    def __str__(self):
+        return f"Course Name: {self.name}, Code: {self.code}, Year: {self.year}, Semester: {self.semester}"
+
+
+# Department class inheriting from AcademicEntity
+class Department(AcademicEntity):
+    def __init__(self, name):
+        super().__init__(name)
+        self.courses = []  # List of courses in the department
+
+    def add_course(self, course):
+        self.courses.append(course)
+
+    def __str__(self):
+        return f"Department Name: {self.name}"
+
+
+# Enrollment system for handling enrollments
+class Enrollment:
+    def __init__(self):
+        self.enrollments = {}  # Maps students to courses
+
+    def enroll_student(self, student, course, department):
+        if student not in self.enrollments:
+            self.enrollments[student] = []
+        self.enrollments[student].append((course, department))
+
+    def display_enrollments(self):
+        for student, courses in self.enrollments.items():
+            print(f"\n{student}:")
+            for course, department in courses:
+                print(f"  Enrolled in {course} of {department}")
+
+
+# Main menu-driven program
+if __name__ == "__main__":
+    # Initialize data structures
+    students = []
+    courses = []
+    departments = []
+    enrollment_system = Enrollment()
+
+    while True:
+        print("\nMenu:")
+        print("1. Add Department")
+        print("2. Add Course")
+        print("3. Add Student")
+        print("4. Enroll Student in a Course")
+        print("5. Display Enrollments")
+        print("6. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            # Add a department
+            dept_name = input("Enter department name: ")
+            department = Department(dept_name)
+            departments.append(department)
+            print(f"Department '{dept_name}' added.")
+
+        elif choice == "2":
+            # Add a course
+            if not departments:
+                print("No departments available. Add a department first.")
+                continue
+            dept_name = input("Enter the department for the course: ")
+            department = next((d for d in departments if d.name == dept_name), None)
+            if not department:
+                print("Department not found.")
+                continue
+            course_name = input("Enter course name: ")
+            course_code = input("Enter course code: ")
+            course_year = input("Enter course year: ")
+            course_semester = input("Enter course semester: ")
+            course = Course(course_name, course_code, course_year, course_semester)
+            department.add_course(course)
+            courses.append(course)
+            print(f"Course '{course_name}' added to department '{dept_name}'.")
+
+        elif choice == "3":
+            # Add a student
+            student_name = input("Enter student name: ")
+            student_roll_no = input("Enter student roll number: ")
+            student = Student(student_name, student_roll_no)
+            students.append(student)
+            print(f"Student '{student_name}' added.")
+
+        elif choice == "4":
+            # Enroll a student in a course
+            if not students or not courses:
+                print("No students or courses available. Add them first.")
+                continue
+            student_roll_no = input("Enter student roll number: ")
+            student = next((s for s in students if s.roll_no == student_roll_no), None)
+            if not student:
+                print("Student not found.")
+                continue
+            course_code = input("Enter course code: ")
+            course = next((c for c in courses if c.code == course_code), None)
+            if not course:
+                print("Course not found.")
+                continue
+            department = next((d for d in departments if course in d.courses), None)
+            if not department:
+                print("Department for the course not found.")
+                continue
+            enrollment_system.enroll_student(student, course, department)
+            print(f"Student '{student.name}' enrolled in course '{course.name}'.")
+
+        elif choice == "5":
+            # Display all enrollments
+            enrollment_system.display_enrollments()
+
+        elif choice == "6":
+            # Exit the program
+            print("Exiting program. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Student 'Aarushi' added.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Student 'Shuchika' added.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Department 'AI' added.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Department 'CS' added.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Department not found.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Course 'CPBP' added to department 'AI'.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Course 'MLOPS' added to department 'AI'.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Course 'Cryptography' added to department 'CS'.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Student 'Aarushi' enrolled in course 'CPBP'.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Student 'Shuchika' enrolled in course 'Cryptography'.
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Student Name: Aarushi, Roll No: 1:
+  Enrolled in Course Name: CPBP, Code: 101, Year: 2024, Semester: 1 of Department Name: AI
+
+Student Name: Shuchika, Roll No: 25:
+  Enrolled in Course Name: Cryptography, Code: 301, Year: 2024, Semester: 2 of Department Name: CS
+
+Menu:
+1. Add Department
+2. Add Course
+3. Add Student
+4. Enroll Student in a Course
+5. Display Enrollments
+6. Exit
+Exiting program. Goodbye!

@@ -1,0 +1,202 @@
+# WAP to determine whether a person is eligible to vote
+
+print("*** Program to determine whether a person is eligible to vote ***")
+
+age = int(input("Enter the age of the person: "))
+if age >=18:
+    print("Person is eligible")
+else:
+    print("Person is not eligible")
+*** Program to determine whether a person is eligible to vote ***
+Enter the age of the person: 12
+Person is not eligible
+# WAP to test whether the number entered by user is positive, negetive or zero
+
+print("*** Program to test whether the number entered by user is positive, negetive or zero ***")
+
+num = int(input("Enter the number: "))
+if num > 0:
+    print("Positive")
+elif num < 0:
+    print("Negative")
+else:
+    print("Zero")
+*** Program to test whether the number entered by user is positive, negetive or zero ***
+Enter the number: -10
+Negative
+# WAP that displays the user to enter a number between 1 to 7 and then displays the corr day of the week
+
+print("*** Program that displays the user to enter a number between 1 to 7 and then displays the corr day of the week ***")
+
+num = int(input("Enter the number: "))
+if num >= 1 and num <= 7:
+    if num == 1:
+        print ("Monday")
+    if num == 2:
+        print ("Tuesday")
+    if num == 3:
+        print ("Wednesday")
+    if num == 4:
+        print ("Thursday")
+    if num == 5:
+        print ("Friday")
+    if num == 6:
+        print ("Saturday")
+    if num == 7:
+        print ("Sunday")
+else:
+    print("Incorrect number")
+*** Program that displays the user to enter a number between 1 to 7 and then displays the corr day of the week ***
+Enter the number: 4
+Thursday
+# WAP to take input from a user and then check whether it is a number or a character. 
+# If it is a char, determine whether it is Upper case or lower case
+
+inp = input("Enter the input: ")
+
+
+''' USING IN-BUILT LIBRARIES '''
+print()
+print("*** USING IN-BUILT LIBRARIES ***")
+if (inp.isalpha()):
+    print("It's a Char")
+    if inp.isupper():
+        print("and in upper case")
+    elif inp.islower():
+        print("and in lower case")
+    else:
+        print("and has both cases")
+elif(inp.isnumeric()):
+    print("It's a number")
+else:
+    print("Invalid Input")
+    
+
+''' ALTERNATE APPROACH '''
+print()
+print("*** USING CODE ***")
+l1 = [0,0,0] #It will have 3 elements. First is No. of upper case char, second is no. of lower case chars, third is no. of integers
+len1 = len(inp)
+flag = 0
+for i in inp:
+    in_ascii = ord(i)
+    if in_ascii in range(65,91) or in_ascii in range(97, 123):
+        flag = 1
+        if in_ascii in range(65,91):
+            l1[0] +=1
+        else:
+            l1[1] +=1
+    elif in_ascii in range(48, 58):
+        flag = 2
+        l1[2] +=1
+        
+        
+if flag == 1:
+    if l1[0] == len1:
+        print("It's a Char")
+        print("and in upper case")
+    elif l1[1] == len1:
+        print("It's a Char")
+        print("and in lower case")
+    elif l1[0]+l1[1] == len1:
+        print("It's a Char")
+        print("and has both cases")
+    else:
+        print("Invalid Input")
+elif flag == 2:
+    if l1[2] == len1:
+        print("It's a number")
+    else:
+        print("Invalid Input")
+else:
+        print("Invalid Input")
+Enter the input: iauidyA
+
+*** USING IN-BUILT LIBRARIES ***
+It's a Char
+and has both cases
+
+*** USING CODE ***
+It's a Char
+and has both cases
+# WAP to calculate the sum and avg of first ten numbers
+
+sum = 0
+for i in range(10):
+    sum+=(i+1)
+avg = sum/10
+print(f'Sum = {sum}')
+print(f'Avg = {avg}')
+Sum = 55
+Avg = 5.5
+# WAP to calc sum of nos from m to n
+
+m = int(input("Enter value of m: "))
+n = int(input("Enter value of n: "))
+
+s = 0
+
+# if (m<=n):
+#     for i in range (m, n):
+#         s += i
+#     print("Sum = ", s)
+# else:
+#     for i in range (m, n, -1):
+#         s += i
+#     print("Sum = ", s)
+    
+    
+    
+if (m <=n):
+    c = 1
+elif (m>n):
+    c = -1
+for i in range (m, n+1, c):
+    s += i
+print (s)
+Enter value of m: 3
+Enter value of n: 5
+12
+# WAP to read the nos until -1 is encountered.  Find the avg of positive and negetive numbers entered by the user
+
+sum_pos = 0
+sum_neg = 0
+c1 = 0
+c2 = 0
+
+while(True):
+    inp = int(input("Enter the number: "))
+    if inp == -1:
+        break
+    if(inp > 0):
+        sum_pos += inp
+        c1 += 1
+    elif(inp < 0):
+        sum_neg += inp
+        c2 += 1
+    
+
+print("Average of positive numbers: ", sum_pos/c1)
+print("Average of negative numbers: ", sum_neg/c2)
+    
+    
+    
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Enter the number: -2
+Enter the number: -3
+Enter the number: -4
+Enter the number: -5
+Enter the number: 5
+Enter the number: 6
+Enter the number: -1
+Average of positive numbers:  4.0
+Average of negative numbers:  -3.5
+# WAP to print first 10 nos using while loop
+
+i = 1
+while(i<=10):
+    print(i, end='\t')
+    i+=1
+1	2	3	4	5	6	7	8	9	10	

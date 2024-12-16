@@ -1,0 +1,133 @@
+
+REGEX
+import re
+pat = r'\Gabc'
+if(re.search(pat, "abcbacabc")):
+    print('Done')
+else:
+    print('Not Done')
+---------------------------------------------------------------------------
+error                                     Traceback (most recent call last)
+Cell In[26], line 3
+      1 import re
+      2 pat = r'\Gabc'
+----> 3 if(re.search(pat, "abcbacabc")):
+      4     print('Done')
+      5 else:
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\__init__.py:177, in search(pattern, string, flags)
+    174 def search(pattern, string, flags=0):
+    175     """Scan through string looking for a match to the pattern, returning
+    176     a Match object, or None if no match was found."""
+--> 177     return _compile(pattern, flags).search(string)
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\__init__.py:307, in _compile(pattern, flags)
+    301     import warnings
+    302     warnings.warn("The re.TEMPLATE/re.T flag is deprecated "
+    303             "as it is an undocumented flag "
+    304             "without an obvious purpose. "
+    305             "Don't use it.",
+    306             DeprecationWarning)
+--> 307 p = _compiler.compile(pattern, flags)
+    308 if flags & DEBUG:
+    309     return p
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py:745, in compile(p, flags)
+    743 if isstring(p):
+    744     pattern = p
+--> 745     p = _parser.parse(p, flags)
+    746 else:
+    747     pattern = None
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:979, in parse(str, flags, state)
+    976 state.flags = flags
+    977 state.str = str
+--> 979 p = _parse_sub(source, state, flags & SRE_FLAG_VERBOSE, 0)
+    980 p.state.flags = fix_flags(str, p.state.flags)
+    982 if source.next is not None:
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:460, in _parse_sub(source, state, verbose, nested)
+    458 start = source.tell()
+    459 while True:
+--> 460     itemsappend(_parse(source, state, verbose, nested + 1,
+    461                        not nested and not items))
+    462     if not sourcematch("|"):
+    463         break
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:544, in _parse(source, state, verbose, nested, first)
+    541         continue
+    543 if this[0] == "\\":
+--> 544     code = _escape(source, this, state)
+    545     subpatternappend(code)
+    547 elif this not in SPECIAL_CHARS:
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py:443, in _escape(source, escape, state)
+    441     if len(escape) == 2:
+    442         if c in ASCIILETTERS:
+--> 443             raise source.error("bad escape %s" % escape, len(escape))
+    444         return LITERAL, ord(escape[1])
+    445 except ValueError:
+
+error: bad escape \G at position 0
+re.search(r'\t', '123\tabc')
+<re.Match object; span=(3, 4), match='\t'>
+# WAP to demonstrate the use of meta characters *, +, ?
+import re
+
+print("Demonstrating *")
+pattern = r"hi(de)*"
+if re.search(pattern, "hidededede"):
+    print("Match hidededede")
+if re.search(pattern, "hi"):
+    print("Match hi")
+
+print("\nDemonstrating +")
+pattern = r"hi(de)+"
+if re.search(pattern, "hidededede"):
+    print("Match hidededede")
+if re.search(pattern, "hi"):
+    print("Match hi")
+
+print("\nDemonstrating ?")
+pattern = r"hi(de)?"
+if re.search(pattern, "hidededede"):
+    print("Match hidededede")
+if re.search(pattern, "hi"):
+    print("Match hi")
+Demonstrating *
+Match hidededede
+Match hi
+
+Demonstrating +
+Match hidededede
+
+Demonstrating ?
+Match hidededede
+Match hi
+GROUPS
+pattern = r"gr(ea)*t"  # A group of ea is created
+if re.match(pattern, "great"):
+    print("great")
+if re.match(pattern, "grt"):
+    print("grt")
+if re.match(pattern, "greaeaeat"):
+    print("greaeaeat")
+great
+grt
+greaeaeat
+# WAP that uses a regex to match strings which start with sequence of digits (atleast 1) followed by a blank and after this add arbitrary characters
+
+pat = r"^\d+\s*"
+pat = r"^[0-9]+ .*"
+if re.match(pat, "123 adij"):
+    print("Good")
+Good
+pat = r"[\w._]+@[\w.-]+."
+if re.match(pat, "info_books@oxford-india.com"):
+    print("Good")
+Good
+ 
+FILE HANDLING
+ 
+ 
+ 

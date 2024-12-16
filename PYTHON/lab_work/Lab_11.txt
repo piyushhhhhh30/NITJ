@@ -1,0 +1,147 @@
+
+STRINGS
+# How to append a string after "Hello"
+str1="Hello "
+print(id(str1))
+print(str1)
+name = input("Enter your name: ")
+str1 += name
+str1 += ". Welcome to Python!"
+print(str1)
+print(id(str1))
+2188282031744
+Hello 
+Hello Aarushi. Welcome to Python!
+2188282126032
+l1 = [1,2,3]
+print(id(l1))
+
+l1.append(4)
+print(id(l1))
+2188260756864
+2188260756864
+# How to append a string after "Hello"
+str1="Hello "
+print(id(str1))
+str2 = "Aarushi"
+print(id(str2))
+str1 += str2
+print(id(str1))
+str3 = str1
+print(id(str3))
+str3 += "1"
+print(id(str3))
+2188282029632
+2188282151344
+2188282190448
+2188282190448
+2188282190384
+name = "Arun"
+age = 13
+print("name = %s and age = %d"%(name, age))
+print("name = %s and age = %d"%("Arun", 13))
+name = Arun and age = 13
+name = Arun and age = 13
+#WAP to display powers of number without using formatting characters
+i=1
+while i<=5:
+    print(i**1, "\t", i**2, "\t",  i**3, "\t",  i**4)
+    i+=1
+print()
+print()
+
+i=1
+while i<=5:
+    print("%d\t%d\t%d\t%d"%(i**1, i**2, i**3,  i**4))
+    i+=1
+print()
+print()
+
+i = 1
+print("%-4s%-5s%-6s"%('i', 'i**2', 'i**3'))
+print()
+print()
+
+i = 1
+while i<=5:
+    print("%-4d%-5d%-6d"%(i, i**2, i**3))
+    i+=1
+1 	 1 	 1 	 1
+2 	 4 	 8 	 16
+3 	 9 	 27 	 81
+4 	 16 	 64 	 256
+5 	 25 	 125 	 625
+
+
+1	1	1	1
+2	4	8	16
+3	9	27	81
+4	16	64	256
+5	25	125	625
+
+
+i   i**2 i**3  
+
+
+1   1    1     
+2   4    8     
+3   9    27    
+4   16   64    
+5   25   125   
+s =  "hello"
+print(s.capitalize())
+Hello
+s = "hello"
+print(s.center(10, '*'))
+**hello***
+msg = 'he'
+str1 = "hellohello"
+print(str1.count(msg, 0, len(str1)))
+2
+msg = "she is my best friend"
+
+print(msg.endswith("end", 0, len(msg)))
+True
+str1 = "the world is beautiful"
+
+print(str1.startswith("th", 0, len(str1)))
+True
+#WAP to print following pattern
+
+
+# Approach 1
+n = 65
+for i in range(1, 7):
+    for j in range(i):
+        print(chr(n+j), end="")
+    print()
+
+print()
+print()
+
+
+
+# Approach 2
+n = 65
+for i in range(1, 7):
+    s=""
+    for j in range(i):
+        s += chr(n+j)
+    print(s)
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCDEF
+
+
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCDEF
+ord('A')
+65
+ 

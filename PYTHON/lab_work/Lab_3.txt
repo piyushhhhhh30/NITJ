@@ -1,0 +1,214 @@
+# Nested loop
+for i in range(2,4):
+    for j in range(1,11):
+        print(i, "*", j, "=", i*j)
+    print()
+2 * 1 = 2
+2 * 2 = 4
+2 * 3 = 6
+2 * 4 = 8
+2 * 5 = 10
+2 * 6 = 12
+2 * 7 = 14
+2 * 8 = 16
+2 * 9 = 18
+2 * 10 = 20
+
+3 * 1 = 3
+3 * 2 = 6
+3 * 3 = 9
+3 * 4 = 12
+3 * 5 = 15
+3 * 6 = 18
+3 * 7 = 21
+3 * 8 = 24
+3 * 9 = 27
+3 * 10 = 30
+
+# Nested loop to print pattern
+
+for i in range(1,6):
+    for j in range(1, i+1):
+        print("*", end = " ")
+    print()
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+# WHile loop inside for loop
+
+names = ["Kelly", "Jessa", "Emma"]
+for name in names:
+    count = 0
+    while(count<5):
+        print(name, end=' ')
+        count+=1
+    print()
+Kelly Kelly Kelly Kelly Kelly 
+Jessa Jessa Jessa Jessa Jessa 
+Emma Emma Emma Emma Emma 
+# WAP to print the pattern
+
+for i in range(1, 6):
+    for k in range(1, 6-i):
+        print(" ", end=" ")
+    for j in range(1,i+1):
+        print(i, " ", end=" ")
+
+    print()
+    
+# Alternate approach
+n=5
+for i in range(1, n+1):
+    for k in range(n, i, -1):
+        print(" ", end=" ")
+    for j in range(1,i+1):
+        print(i, " ", end=" ")
+    print()
+        1   
+      2   2   
+    3   3   3   
+  4   4   4   4   
+5   5   5   5   5   
+        1   
+      2   2   
+    3   3   3   
+  4   4   4   4   
+5   5   5   5   5   
+# WAP to print a rectangle pattern with 5 rows and 3 columns of stars
+
+for i in range(5):
+    for j in range(3):
+        print("*", end="")
+    print()
+***
+***
+***
+***
+***
+##### WAP to classify a given number as prime or composite
+# WAP using for loop to calculate factorial of a number
+
+n = int(input("Enter the number to check whether prime or composite: "))
+c = 0
+for i in range(2,n):
+    if n%i == 0:
+        c+=1
+if c!=0:
+    print("Number is composite")
+else:
+    print("Number is prime")
+    
+# Calculating factorial
+fact = 1
+for i in range(2,n+1):
+    fact *= i
+print("Factorial is: ", fact)
+Enter the number to check whether prime or composite: 4
+Number is composite
+Factorial is:  24
+# WAP that displays all leap years from 1900 to 2101
+
+year = int(input("Enter the year (1900-2101) to check whether leap year: "))
+if year%100 == 0:
+    if year%400 == 0:
+        print("Leap year")
+    else:
+        print("Not leap year")
+else:
+    if year%4 == 0:
+        print("Leap year")
+    else:
+        print("Not leap year")
+        
+Enter the year (1900-2101) to check whether leap year: 2004
+Leap year
+# WAP to sum the series numbers - 1 + 1/2 + ... + 1/n using for loop
+
+n = int(input("Enter the number: "))
+s = 0
+for i in range(1, n+1):
+    s += (1/i)
+print("Sum of series is: ", s)
+Enter the number: 3
+Sum of series is:  1.8333333333333333
+# Break statement
+for i in range(4):
+    for j in range(4):
+        if j==i:
+            break
+        print(i,j)
+1 0
+2 0
+2 1
+3 0
+3 1
+3 2
+# Continue statement
+first = [2,4,6]
+second = [2,4,6]
+for i in first:
+    for j in second:
+        if i==j:
+            continue
+        print(i, "*", j, "=", i*j)
+
+# Example 2 - 
+print()
+for i in range(4):
+    for j in range(4):
+        if j==i:
+            continue
+        print(i,j)
+2 * 4 = 8
+2 * 6 = 12
+4 * 2 = 8
+4 * 6 = 24
+6 * 2 = 12
+6 * 4 = 24
+
+0 1
+0 2
+0 3
+1 0
+1 2
+1 3
+2 0
+2 1
+2 3
+3 0
+3 1
+3 2
+# List slicing
+
+list1 = ['physics', 'chem', 1997, 2000]
+list2 = [1,2,3,4,5,6,7,8]
+print(list2[1:5])
+[2, 3, 4, 5]
+# Multidimensional arrays
+
+list1 = [['marry','john'],['harry']]
+print(list1[0][1])
+print(list1[1][0])
+john
+harry
+# List methods- insert, append, extend, reverse, reversed, remove, pop, slicing, 
+
+# HW - Read about slice operations on list
+
+List = ['G', 'E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
+print(List)
+
+Sliced_list = List[:-6]
+print("Sliced: ", Sliced_list)
+
+l2 = List[-6:-1]
+print(l2)
+
+l3 = List[::-1]
+print(l3)
+['G', 'E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
+Sliced:  ['G', 'E', 'E', 'K', 'S', 'F', 'O']
+['R', 'G', 'E', 'E', 'K']
+['S', 'K', 'E', 'E', 'G', 'R', 'O', 'F', 'S', 'K', 'E', 'E', 'G']

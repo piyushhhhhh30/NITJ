@@ -1,0 +1,32 @@
+
+File Handling
+# Program to read 4th line of file
+fo = open('test.txt', 'r')
+c = 1
+l = 4
+for line in fo:
+    print(line)
+    if c==l:
+        print("***************", line)
+    c+=1
+Hello World
+
+Hello Python
+
+Good morning
+
+How are you
+*************** How are you
+# Demonstrating pickle dump() function
+import pickle
+mfile = open("file.txt", "wb")
+dict1 = {'ename': 'jitendra', 
+        'phone': '3907489134'}
+pickle.dump(duct1, mfile)
+mfile.close()
+# Demonstrating pickle load() function
+mf = open("", "rb")
+dict1 = pickle.load(mf)
+print(dict1)
+mf.close
+import csv

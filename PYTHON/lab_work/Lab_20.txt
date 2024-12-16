@@ -1,0 +1,143 @@
+
+# WAP to handle the divide by zero exception
+
+try:
+    num = int(input("Enter the numerator: "))
+    deno = int(input("Enter the denominator: "))
+
+    q = num/deno
+    print('Quotient is: ', q)
+except ZeroDivisionError:
+    print("Invalid Value of Denominator(Zero)!")
+except ValueError:
+    print("Values must be integers!!")
+Values must be integers!!
+# Multiple exceptions in a single block
+
+try:
+    num = int(input("Enter the number: "))
+    print(num**2)
+
+except (KeyboardInterrupt, TypeError, ValueError):
+    print("Exception Raised!!")
+Exception Raised!!
+# Except block without exception
+
+# try:
+#     operation statements
+# except:
+#     multiple statements
+# else:
+#     This block is executed if there is no error
+# Raise Exceptions
+
+try:
+    num = 10
+    print(num)
+    raise ValueError
+except:
+    print("Exception occurred")
+10
+Exception occurred
+# Instantiating Exceptions
+
+try:
+    num = 10
+    print(num)
+    raise ValueError
+except Exception as errorobj:
+    print(type(errorobj))
+    print(errorobj.args)
+10
+<class 'ValueError'>
+()
+# Program to demonstrate the use of assert keyword
+
+def calculate_average(marks):
+    # Ensure the input list is not empty
+    assert len(marks) > 0, "The list of marks cannot be empty!"
+    
+    return sum(marks) / len(marks)
+
+# Example usage
+try:
+    marks_list = [85, 90, 78, 92]
+    print("Average Marks:", calculate_average(marks_list))
+    
+    empty_list = []
+    print("Average Marks:", calculate_average(empty_list))  # This will trigger the assertion
+except AssertionError as e:
+    print("AssertionError:", e)
+Average Marks: 86.25
+AssertionError: The list of marks cannot be empty!
+# Assert
+
+# WAP that prompts the use to enter a number and prints the square of that number. If no number is entered, then a KeyBoardInterrupt is generated
+
+
+try:
+    num = int(input("Enter the number: "))
+    print(num*num)
+except KeyboardInterrupt:
+    print("Exception occurred")
+Exception occurred
+# WAP which infinitely prints natural numbers. Raise the stopIterationException after displaying first 20 numbers tp exit from the program
+
+i = 1
+try:
+    while(True):
+        print(i)
+        if i>=20:
+            raise StopIteration
+        i+=1
+except StopIteration:
+    print("Infinite loop count exceeded 20!")
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+Infinite loop count exceeded 20!
+# WAP that randomly generates a number. Raise a UserDefined exception if the number is below 0.1
+
+import random
+
+class UserDefinedException(Exception):
+    pass
+
+
+a = random.random()
+try:
+    print(a)
+    if a<0.1:
+        raise UserDefinedException
+
+except UserDefinedException:
+    print("UserDefinedExcpetion raised as value enters is less than 0.1")
+0.02677165357859712
+UserDefinedExcpetion raised as value enters is less than 0.1
+error exception handling
+operator overloading
+inheritance
+classes and objects
+data structures - list set tuples dict
+strings
+func and modules
+decision control statements - if, else, if else, nested if etc.
+basics of python - operators, looping, expressions, data types, type conversion, literal constants, break continue, 
+ 

@@ -1,0 +1,220 @@
+
+# WAP that uses class to store the name and marks of students. Use lists to store the marks in 3 subjects.
+
+class Student():
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+name = "Shuchika"
+marks_list = [10,20,30]
+obj = Student(name, marks_list)
+print(obj.name)
+print(obj.marks[0])
+print(obj.marks[1])
+print(obj.marks[2])
+Shuchika
+10
+20
+30
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.marks = []
+    def enterMarks(self):
+        for i in range(3):
+            m = int(input("Enter marks of student %s in subject %s: "%(self.name, i+1)))
+            self.marks.append(m)
+    def display(self):
+        print(self.name, self.marks)
+
+name = "Shuchika"
+s1 = Student(name)
+s1.enterMarks()
+
+s2 = Student("Anisha")
+s2.enterMarks()
+
+s1.display()
+s2.display()
+Shuchika [60, 70, 60]
+Anisha [90, 100, 80]
+# WAP with class Employee that keeps a track of the nummber of employees in an organisation and also stores their name, designation, and salary details.
+
+class Employee:
+    global count_of_emp
+    count_of_emp = 0
+
+    def __init__(self):
+        self.emp = {}
+    def enterEmployeeDetails(self):
+        i = int(input("Enter Employee id: "))
+        n = input("Enter Employee Name: ")
+        d = input("Enter Employee Designation: ")
+        s = input("Enter Employee Salary: ")
+        self.emp.update({str(i): [n, d, s]})
+    def displayCount(self):
+        print("Total count of employees: ", count_of_emp)
+    def displayDetails(self):
+        print("List of Employees and their details: ", self.emp)
+
+e1 = Employee()
+e1.enterEmployeeDetails()
+count_of_emp += 1
+
+e2 = Employee()
+e2.enterEmployeeDetails()
+count_of_emp += 1
+
+e1.displayDetails()
+e2.displayDetails()
+
+e2.displayCount()
+List of Employees and their details:  {'1': ['Shuchika', 'SDE', '10000']}
+List of Employees and their details:  {'2': ['AArushi', 'SE1', '12000']}
+Total count of employees:  2
+# WAP that has a class Circle. Use a class variable to define the value of constant pi. Use this class variable to calculate area and curcumference of a circle with specified radius.
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+        self.area = 0
+        self.circum = 0
+        self.pi = 3.14
+    def calcArea(self):
+        self.area = self.pi * self.radius * self.radius
+    def calcCircum(self):
+        self.circum = 2 * self.pi * self.radius
+    def printDetails(self):
+        print()
+        print("Given radius: ", self.radius)
+        print("Area of circle: ", self.area)
+        print("Circumference of circle: ", self.circum)
+
+c1 = Circle(7)
+c1.calcArea()
+c1.calcCircum()
+
+c2 = Circle(10)
+c2.calcArea()
+c2.calcCircum()
+
+c1.printDetails()
+c2.printDetails()
+Given radius:  7
+Area of circle:  153.86
+Circumference of circle:  43.96
+
+Given radius:  10
+Area of circle:  314.0
+Circumference of circle:  62.800000000000004
+# Write a menu driven program that keeps record of books and journals available in a library. 
+# class book
+# attributes of constructor - title, author name, price of book
+# two functions - read and display()
+# use logic that if you have list of books in a list, then you have a choice for read() and display() for that particular book.
+
+
+class Book():
+    def __init__(self,):
+        self.title = ""
+        self.author = ""
+        self.price = ""
+    def read(self):
+        print()
+        self.title = input("Enter title of book: ")
+        self.author = input("Enter name of author of book: ")
+        self.price = input("Enter price of book: ")
+    def display(self):
+        print("-----------")
+        print("Title of book: ", self.title)
+        print("Author of book: ", self.author)
+        print("Price of book: ", self.price)
+        print("-----------")
+
+list_of_books = []
+while True:
+    print()
+    print("***********************************************************")
+    ch = input("Enter your choice:\n1. Press 1 to enter a new book into the system.\n2. Press 2 to display all records.\n3. Press 3 to search book by title and print its details\n4. Press 4 to search book by author and print its details\n5. Press anything else to exit\nEnter your choice: ")
+    if int(ch) == 1:
+        obj = Book()
+        obj.read()
+        list_of_books.append(obj)
+    elif int(ch) == 2:
+        for i in list_of_books:
+            i.display()
+            print()
+    elif int(ch) == 3:
+        pat = input("Enter the search keyword in title: ")
+        for i in list_of_books:
+            if pat.lower() in i.title.lower():
+                i.display()
+    elif int(ch) == 4:
+        pat = input("Enter the search keyword in author name: ")
+        for i in list_of_books:
+            if pat.lower() in i.author.lower():
+                i.display()
+    else:
+        print("Invalid choice! Exiting the program")
+        break
+    
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+-----------
+Title of book:  Programming Basics with Python
+Author of book:  Sharma, Deepa
+Price of book:  100
+-----------
+
+-----------
+Title of book:  Programming Basics with C++
+Author of book:  Mark, Sharma, Nicholas
+Price of book:  200
+-----------
+
+-----------
+Title of book:  Principles of Soft Computing using Python
+Author of book:  S. N. Sivanandam
+Price of book:  300
+-----------
+
+-----------
+Title of book:  Let Us C
+Author of book:  Yashavant Kanetkar
+Price of book:  400
+-----------
+
+
+***********************************************************
+-----------
+Title of book:  Programming Basics with Python
+Author of book:  Sharma, Deepa
+Price of book:  100
+-----------
+-----------
+Title of book:  Principles of Soft Computing using Python
+Author of book:  S. N. Sivanandam
+Price of book:  300
+-----------
+
+***********************************************************
+***********************************************************
+-----------
+Title of book:  Programming Basics with Python
+Author of book:  Sharma, Deepa
+Price of book:  100
+-----------
+-----------
+Title of book:  Programming Basics with C++
+Author of book:  Mark, Sharma, Nicholas
+Price of book:  200
+-----------
+
+***********************************************************
+Invalid choice! Exiting the program
+ 
+ 

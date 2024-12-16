@@ -1,0 +1,213 @@
+a = '4'
+b = ord(a)
+print(b)
+print(type(b))
+52
+<class 'int'>
+b = hex(56)
+print(b)
+print(type(b))
+0x38
+<class 'str'>
+b = oct(56)
+print(b)
+print(type(b))
+0o70
+<class 'str'>
+x = 'javaTpoint'
+y=tuple(x)
+print("after converting the string to a tuple: ", end="")
+print(y)
+
+y = set(x)
+print("after converting the string to a set: ", end="")
+print(y)
+
+y = list(x)
+print("after converting the string to a list: ", end="")
+print(y)
+after converting the string to a tuple: ('j', 'a', 'v', 'a', 'T', 'p', 'o', 'i', 'n', 't')
+after converting the string to a set: {'a', 'T', 'n', 'i', 't', 'o', 'p', 'j', 'v'}
+after converting the string to a list: ['j', 'a', 'v', 'a', 'T', 'p', 'o', 'i', 'n', 't']
+# Arithmetic operators in python
+
+a = 7
+b = 2
+
+print("sum: ", a+b)
+print("diff: ", a-b)
+print("mult: ", a*b)
+print("div: ", a/b)
+print("mod: ", a%b)
+print("floor: ", a//b)
+print("power: ", a**b)
+sum:  9
+diff:  5
+mult:  14
+div:  3.5
+mod:  1
+floor:  3
+power:  49
+a = 10
+b = 5
+# Addition
+a+=b
+print(a)
+20
+# Subtraction
+a-=b
+print(a)
+15
+# Multiplication
+a*=b
+print(a)
+75
+# Division
+a/=b
+print(a)
+15.0
+# Modulo
+a%=b
+print(a)
+0.0
+# Comparison Operators
+
+a=5
+b=2
+
+print(a==b)
+print(a!=b)
+print(a>b)
+print(a<b)
+print(a<=b)
+print(a>=b)
+False
+True
+True
+False
+False
+True
+# Logical Operators
+
+a=5
+b=6
+print((a>2) and (b>=6))
+print((a>2) or (b>=6))
+True
+True
+# Identity operators
+x1=5
+y1=5
+x2='Hello'
+y2='Hello'
+x3=[1,2,3]
+y3=[1,2,3]
+
+print(x1 is not y1)
+print(x2 is y2)
+print(x3 is y3)
+False
+True
+False
+# Memory address
+
+print(id(x1))
+print(id(y1))
+
+print(id(x2))
+print(id(y2))
+
+print(id(x3))
+print(id(y3))
+140730070688528
+140730070688528
+1893530647328
+1893530647328
+1893529400648
+1893529400392
+x4=6
+y4='bye'
+
+print(id(x4))
+print(id(y4))
+
+print(x4 is not y4)
+140730070688560
+1893530604688
+True
+# Membership Operators
+dict1 = {1:'a', 
+       2:'b'}
+
+message = 'Hello World'
+print('H' in message)
+
+print('hello' not in message)
+
+print(1 in dict1)
+
+print('a' in dict1)
+True
+True
+True
+False
+# Operator Precedence
+
+meal="fruit"
+money=0
+
+# AND has higher priority than OR
+if meal=="fruit" or meal=="sandwich" and money>=2:
+    print("Lunch being delivered")
+else:
+    print("Can't deliver")
+Lunch being delivered
+if (meal=="fruit" or meal=="sandwich") and money>=2:
+    print("Lunch being delivered")
+else:
+    print("Can't deliver")
+Can't deliver
+# Associativity
+
+# 1. Left to right
+
+print(5*2//3)
+print(5*(2//3))
+3
+0
+# Right to left: EXPONENT OPERATOR
+
+print(2**3**2)
+print((2**3)**2)
+512
+64
+# Non Associative Operators
+
+# x < y < z is equivalent to x < y and y < z
+
+x=y=z=1
+x=y=z+=2
+  File "<ipython-input-42-165a478b27b0>", line 6
+    x=y=z+=2
+          ^
+SyntaxError: invalid syntax
+a=12
+print(bin(a))
+
+print(a>>2, "   ", bin(a>>2))
+
+print(a<<1, "   ", bin(a<<1))
+0b1100
+3     0b11
+24     0b11000
+a=16
+b=12
+c=a+(b>>1)
+print(c)
+22
+# WAP to calculate area of a circle 
+# WAP to print the digit at one's place of a number
+# WAP to calc avg of 2 nos and print their deviation
+# WAP to convert a floating pt number into the corr integer
+# WAP to convert an int to corr floating p int
+# WAP to convert degree Fahrenheit to Celcius

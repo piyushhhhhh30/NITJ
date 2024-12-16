@@ -1,0 +1,190 @@
+
+# Arrays continued
+
+import array as arr
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+a = arr.array('i', l)
+print("Initial Array: ")
+for i in (a):
+    print(i, end = " ")
+    
+sliced_array = a[3:8]
+print("\nSlicing elements in a range 3-8: ")
+print(sliced_array)
+sliced_array = a[5:]
+print("\nElements sliced from 5th element till the end: ")
+print(sliced_array)
+sliced_array=a[:]
+print("\nPrinting all elements using slice operartion: ")
+print(sliced_array)
+Initial Array: 
+1 2 3 4 5 6 7 8 9 10 
+Slicing elements in a range 3-8: 
+array('i', [4, 5, 6, 7, 8])
+
+Elements sliced from 5th element till the end: 
+array('i', [6, 7, 8, 9, 10])
+
+Printing all elements using slice operartion: 
+array('i', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+# Array Updation
+import array
+
+arr = array.array('i', [1,2,3,1,2,5])
+for i in range(0,6):
+    print(arr[i], end = " ")
+
+print("\nAfter updation")
+arr[2]=6
+for i in range(0,6):
+    print(arr[i], end=" ")
+1 2 3 1 2 5 
+After updation
+1 2 6 1 2 5 
+# Array count
+
+import array
+arr = array.array('i', [1,2,3,1,2,5])
+count = arr.count(2)
+print("No of occurrences of 2: ", count)
+No of occurrences of 2:  2
+# Sort list according to length of elements
+
+l1 = ["amy", "sapna", "rohan", "aman", "Gaurav"]
+
+# Method 1 - INBUILT FUNCTION
+s1 = sorted(l1, key=len)
+print(s1)
+
+s2 = sorted(l1)
+print(s2)
+['amy', 'aman', 'sapna', 'rohan', 'Gaurav']
+['Gaurav', 'aman', 'amy', 'rohan', 'sapna']
+def bubble_sort(arr):
+    n = len(arr)
+    
+    for i in range(n):
+        for j in range(n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+sample_list =  [64, 34, 25, 12, 22, 11, 90]
+
+bubble_sort(sample_list)
+print(sample_list)
+[11, 12, 22, 25, 34, 64, 90]
+# TUPLES
+
+'''
+Create empty tuple: 
+    tuple1 = ()
+
+Create tuple using string: 
+    tuple1 = ('Hello', 'Sam')
+
+Create tuple using list: 
+    list1 = ['Hello', 'Sam']
+    print(tuple(list1))
+
+Create a tuple using built-in function: 
+    tuple1 = tuple('Sam')
+'''
+# Creating a tuple with mixed datatypes
+tuple1 = (5, 'aiojdio', 7, 'JFidsof')
+print(tuple1)
+(5, 'aiojdio', 7, 'JFidsof')
+# Nested tuples
+
+t1 = (1,2,3)
+t2 = ('a', 'b', 'c')
+t3 = (t1, t2)
+print(t3)
+((1, 2, 3), ('a', 'b', 'c'))
+# Creating a tuple with repetition
+t1 = ('Sam',)*3
+print(t1)
+('Sam', 'Sam', 'Sam')
+# Creating a tuple using Loop
+t1 = ('Sam')
+n = 5
+for i in range(int(n)):
+    t1 = (t1,)
+    print(t1)
+('Sam',)
+(('Sam',),)
+((('Sam',),),)
+(((('Sam',),),),)
+((((('Sam',),),),),)
+# Tuple operations
+
+t1 = tuple("Sam")
+print(t1)
+print(t1[0])
+
+# Tuple Unpacking:
+t1 = ("sam", "is", "good")
+a, b, c = t1
+print(a)
+print(b)
+print(c)
+('S', 'a', 'm')
+S
+sam
+is
+good
+# Concatenation of Tuples
+t1 = (1, 2, 3)
+t2 = ("run", "to", "the", "tree")
+t3 = t1 + t2
+print(t3)
+(1, 2, 3, 'run', 'to', 'the', 'tree')
+# Slicing of tuples
+
+t1 = tuple("TRANSFORMERS")
+print(t1[1:])
+print(t1[::-1])
+print(t1[2:5])
+('R', 'A', 'N', 'S', 'F', 'O', 'R', 'M', 'E', 'R', 'S')
+('S', 'R', 'E', 'M', 'R', 'O', 'F', 'S', 'N', 'A', 'R', 'T')
+('A', 'N', 'S')
+# Deleting a tuple
+
+t1 = (0, 1, 2, 3, 4)
+print(t1)
+del(t1)
+print(t1)
+(0, 1, 2, 3, 4)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-36-63f7ee7ca0c3> in <module>
+      4 print(t1)
+      5 del(t1)
+----> 6 print(t1)
+
+NameError: name 't1' is not defined
+# Differences and similarities between list and tuples
+
+# Read about Tuple Assignment (how many ways there are to assign a tuple)
+# Program to return highest and lowest valyes in a tuple
+def maxmin(vals):
+    x = max(vals)
+    y = min(vals)
+    return (x,y)
+
+vals = (90, 88, 32, 12, 78, 99)
+(max_marks, min_marks) = maxmin(vals)
+print("Highest marks = ", max_marks)
+print("Lowest marks = ", min_marks)
+Highest marks =  99
+Lowest marks =  12
+# Program to demonstrate use of nested tuples
+
+Toppers = (("arav", 97, "B.Sc."), ("raghav", 87, "BCA"))
+for i in Toppers:
+    print(i)
+('arav', 97, 'B.Sc.')
+('raghav', 87, 'BCA')
+# Use range() and len() on tuples to create suitable iterable
+# READ ABOUT NUMPY
+ 
+ 
+ 

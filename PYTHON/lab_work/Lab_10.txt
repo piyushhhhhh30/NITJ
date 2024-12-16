@@ -1,0 +1,32 @@
+
+a = "HelloWorld"
+print(a[2:5])
+
+for i in range(2, 5):
+    print(a[i], end="")
+llo
+llo
+# Get the characters from o in World to but not included d in "World"
+
+print(a[-4:-1])
+orl
+# COncatenate hello and world by adding a space
+
+a = "Hello"
+b = "World"
+print(a + " " + b)
+Hello World
+c = 1
+for i in range(1,6):
+    for j in range(i):
+        print(c, end=" ")
+        c+=1
+    print()
+1 
+2 3 
+4 5 6 
+7 8 9 10 
+11 12 13 14 15 
+ 
+ 
+ 

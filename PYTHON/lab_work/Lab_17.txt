@@ -1,0 +1,64 @@
+
+# WAP to rename the file file1.txt to students.txt
+import os
+os.rename("file_handling_test/file1_temp.txt", "file_handling_test/students.txt")
+# WAP to delete a file called students.txt
+
+os.remove( "file_handling_test/students.txt")
+# WAP to create a new directroy in the current directory
+
+os.mkdir("new_dir")
+os.getcwd()
+'C:\\Users\\shuch\\NITJ\\Sem1\\CPBP\\Class Work'
+# WAP that changes curr dur to newly created dir new_dir
+
+os.chdir("new_dir")
+os.getcwd()
+'C:\\Users\\shuch\\NITJ\\Sem1\\CPBP\\Class Work\\new_dir'
+os.chdir("../")
+os.getcwd()
+'C:\\Users\\shuch\\NITJ\\Sem1\\CPBP\\Class Work'
+# WAP to delete new_dir
+
+os.rmdir("new_dir")
+# WAP that uses os.path.join() to form a valid file path
+f = os.path.join("C", "students", "UG", "btech.docx")
+print(f)
+C\students\UG\btech.docx
+# WAP to print the abosolute path of a file using os.path.join
+filename = "file1.txt"
+print(os.path.join(os.getcwd(), "file_handling_test" , filename))
+C:\Users\shuch\NITJ\Sem1\CPBP\Class Work\file_handling_test\file1.txt
+Methods from the OS Module
+print(os.path.abspath("Python\\Strings.docx"))
+C:\Users\shuch\NITJ\Sem1\CPBP\Class Work\Python\Strings.docx
+print(os.path.isabs("Python\\Strings.docx") == '')
+False
+print(os.path.isabs("Python\\Strings.docx"))
+False
+print(os.path.isabs("C:\\Users\\shuch\\NITJ\\Sem1\\CPBP\\Class Work\\file_handling_test\\file1.txt"))
+True
+# WAP that counts the number of tabs, spaces, newline characters in a file
+
+t = 0
+s = 0
+n = 0
+with open("file_handling_test/file1.py") as f1:
+    a = f1.read()
+    for i in a:
+        if i == '\t':
+            t += 1
+        elif i == ' ': 
+            s += 1
+        elif i == '\n':
+            n += 1
+print("Tabs: ", t)
+print("Spaces: ", s)
+print("Newline: ", n)
+Tabs:  0
+Spaces:  50
+Newline:  10
+ 
+ 
+ 
+ 

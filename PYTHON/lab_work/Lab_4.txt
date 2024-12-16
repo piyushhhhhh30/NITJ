@@ -1,0 +1,314 @@
+# List Comprehension
+# Syntax - [expression(element) for element in oddList if condition]
+
+l1 = [x**2 for x in range(1,11) if x%2 == 1]
+print(l1)
+[1, 9, 25, 49, 81]
+ls = [1,'a',"abc",[2,3,4,5],8.9]
+i = 0
+while i < (len(ls)):
+    print(ls[i])
+    i+=1
+1
+a
+abc
+[2, 3, 4, 5]
+8.9
+# List cloning
+
+ls = [1,2,3,4,5,6,7]
+ls2 = ls[2:5]
+print(ls2)
+[3, 4, 5]
+# Stack operations - List as a stack
+
+stack = [1,2,3,4,5,6]
+print("Original stack: ", stack)
+stack.append(7)
+print("Stack after push operation: ", stack)
+stack.pop()
+print("Stack after pop operation: ", stack)
+l2 = len(stack) - 1
+print("Value obtained after peep operation: ", stack[l2])
+Original stack:  [1, 2, 3, 4, 5, 6]
+Stack after push operation:  [1, 2, 3, 4, 5, 6, 7]
+Stack after pop operation:  [1, 2, 3, 4, 5, 6]
+Value obtained after peep operation:  6
+# Queue Operations - List as a Queue
+queue = [1,2,3,4,5,6]
+print("Original Queue is: ", queue)
+queue.append(7)
+print("Queue after push operation: ", queue)
+queue.pop(0)
+print("Queue after pop operation: ", queue)
+print("Value obtained after peep operation: ", queue[len(queue) - 1])
+Original Queue is:  [1, 2, 3, 4, 5, 6]
+Queue after push operation:  [1, 2, 3, 4, 5, 6, 7]
+Queue after pop operation:  [2, 3, 4, 5, 6, 7]
+Value obtained after peep operation:  7
+# HW - read about list as queue and List as stack
+# Looping in lists
+
+l1 = [1,2,3,4,5,6,7,8,9,10]
+s = 0
+for i in l1:
+    s+=i
+print("Sum = ", s)
+print("Avg = ", s/len(l1))
+Sum =  55
+Avg =  5.5
+# Enumerate function - Returns an enumerate object which contains the index and value of all items in the list as a tuple
+
+l1 = [1,2,3,4,5]
+for index, i in enumerate(l1):
+    print(i, "is at index: ", index)
+1 is at index:  0
+2 is at index:  1
+3 is at index:  2
+4 is at index:  3
+5 is at index:  4
+# Program to print index of values in a list
+
+l1 = [1,2,3,4,5]
+for i in range(len(l1)):
+    print("index: ", i)
+index:  0
+index:  1
+index:  2
+index:  3
+index:  4
+# Using iterators
+
+l1 = [1,2,3,4,5]
+it = iter(l1)
+for i in range(len(l1)):
+    print("Element at index", i , "is: ", next(it))
+Element at index 0 is:  1
+Element at index 1 is:  2
+Element at index 2 is:  3
+Element at index 3 is:  4
+Element at index 4 is:  5
+# PYTHON FUNCTIONS
+
+''' HW - 
+
+What do you mean by python functions?
+What do you mean by function overheading?
+
+'''
+# User defined function
+
+
+# Defining the function
+def square(num):
+#     Returns the square of the number
+    return num**2
+
+obj = square(6)
+print(obj)
+36
+# Pass by Reference and Pass by value
+
+def square(item_list):
+#     Returns the square of the number
+    squares = []
+    for i in item_list:
+        squares.append(i**2)
+    return squares
+
+# Pass by reference
+num = [1,2,3,4,5]
+obj = square(num)
+print(obj)
+
+# Pass by value
+obj = square([1,2,3,4,5])
+print(obj)
+[1, 4, 9, 16, 25]
+[1, 4, 9, 16, 25]
+# Python function arguments
+
+def evenOdd(x):
+    if(x%2 == 0):
+        print("even")
+    else:
+        print("odd")
+evenOdd(2)
+evenOdd(3)
+even
+odd
+# Default arguments
+
+def myFun(x, y=50):
+    print("x = ", x)
+    print("y = ", y)
+    print("End of Function call!")
+    
+myFun(5)
+myFun(5,10)
+x =  5
+y =  50
+End of Function call!
+x =  5
+y =  10
+End of Function call!
+# Positional arguments
+
+def nameage(name, age):
+    print("Hi I am", name)
+    print("My age is", age)
+
+print("Case 1: ")
+nameage("Suraj", 27)
+
+print("\nCase 2: ")
+nameage(27, "Suraj")
+Case 1: 
+Hi I am Suraj
+My age is 27
+
+Case 2: 
+Hi I am 27
+My age is Suraj
+# Arbitrary Keyword Arguments - *args and **kwargs
+
+'''
+
+*args = Non Keyword arguments
+**kwargs = Keyword arguments
+
+'''
+
+def myFun(*argv):
+    for arg in argv:
+        print(arg)
+
+myFun('Hello', 'Welcome', 'to')
+Hello
+Welcome
+to
+# Docstring
+
+'''
+Syntax:
+print(function_name.__doc__)
+
+'''
+
+
+def evenodd(x):
+    '''Function to check if number is even or odd'''
+    if(x%2==o):
+        print("Even")
+    else:
+        print("odd")
+
+print(evenodd.__doc__)
+Function to check if number is even or odd
+# Anonymous Functions - A function without a name
+# Eg - Using Lambdas
+
+'''
+Syntax of Lambdas - 
+lambda arguments: expression
+
+'''
+
+# Program to add 4 numbers using Lambdas
+
+s = lambda a,b,c: a+b+c
+print(s(4,5,5))
+
+a = lambda x,y: x*y
+print(a(4,5))
+14
+20
+# Using lambdas with filter
+
+'''
+Filter is a function that accepts 2 args: a function and an iterable
+
+'''
+
+l = [35, 12, 69, 55, 75, 14, 73]
+odd_nums = list(filter(lambda num: (num%2 != 0), l))
+print(odd_nums)
+[35, 69, 55, 75, 73]
+ 
+# GLOBAL VARIABLES AND LOCAL VARIABLES
+
+var = "Good"  #Global Variable
+def show():
+    global var1
+    var1 = "Sunday"
+show()
+print("Outside function var1: ", var1)
+print("car is", var)
+Outside function var1:  Sunday
+car is Good
+# WAP that subtracts two numbers using a function
+
+def func(a,b):
+    return a - b
+
+a = int(input("Enter num1: "))
+b =  int(input("Enter num1: "))
+print("num1 - num2 = ", func(a,b))
+Enter num1: 5
+Enter num1: 2
+num1 - num2 =  3
+# WAP using functions and return statements to check whether a number is even or odd
+
+def func(a):
+    if (a%2 == 0):
+        return "Even"
+    else:
+        return "Odd"
+
+a = int(input("Enter num1: "))
+print("Number is", func(a))
+Enter num1: 3
+Number is Odd
+# WAP to convert time into minutes
+
+time = input("Enter time (HH:MM:SS) - ")
+
+ls = time.split(':')
+
+total_min = int(ls[0])*60 + int(ls[1]) + int(ls[2])/60
+
+print("Equivalent time in minutes: ", total_min)
+Enter time (HH:MM:SS) - 2:33:40
+Equivalent time in minutes:  153.66666666666666
+# WAP to swap two numbers
+
+a = int(input("Enter num1: "))
+b = int(input("Enter num2: "))
+
+# Swapping the numbers
+c = a
+a = b
+b = c
+print("Num1 now is: ", a)
+print("Num2 now is: ", b)
+Enter num1: 2
+Enter num2: 3
+Num1 now is:  3
+Num2 now is:  2
+# WAP to calculate simple interest. 
+# Suppose the customer is a Senior citizen and is being offered 12% ROI. For all other customers, ROI is 10%.
+
+age = int(input("Enter age of person: "))
+principal = float(input("Enter principal amount: "))
+time = int(input("Enter time in years: "))
+
+if age>=60:
+    r=12
+else:
+    r=10
+si = principal*r*time/100
+print("Simple Interest is: ", si)
+Enter age of person: 66
+Enter principal amount: 10000
+Enter time in years: 1
+Simple Interest is:  1200.0

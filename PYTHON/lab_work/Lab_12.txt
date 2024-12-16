@@ -1,0 +1,168 @@
+
+STRING METHODS Contd.
+msg = "she is my best friend"
+print(msg.find("my", 0, len(msg)))
+7
+print(msg.index("mine", 0, len(msg)))
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-4-eeb8e1ea832a> in <module>
+----> 1 print(msg.index("mine", 0, len(msg)))
+
+ValueError: substring not found
+# rfind searches from end
+msg = "is this your bag?"
+print(msg.rfind("is", 0, len(msg)))
+5
+print(msg.rindex("is"))
+print(msg.rindex("z"))
+5
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-15-2021810b11ff> in <module>
+      1 print(msg.rindex("is"))
+----> 2 print(msg.rindex("z"))
+
+ValueError: substring not found
+msg = "jamesbond007"
+print(msg.isalnum())
+True
+print(msg.isalpha())
+msg = "jamesbond"
+print(msg.isalpha())
+False
+True
+msg = "007"
+print(msg.isdigit())
+True
+msg = "Hello"
+print(msg.islower())
+False
+msg = "   "
+print(msg.isspace())
+True
+msg = "Hello"
+print(msg.isupper())
+False
+print(len(msg))
+5
+s = "Hello"
+print(s.ljust(10,'%'))
+Hello%%%%%
+print(s.rjust(10,'*'))
+*****Hello
+s = "-1234"
+print(s.zfill(10))
+-000001234
+s = "  Hello  "
+
+print('abc' + s.lstrip() + 'zyx')
+abcHello  zyx
+print('abc' + s.rstrip() + 'zyx')
+abc  Hellozyx
+print('abc' + s.strip() + 'zyx')
+abcHellozyx
+s = "Hello friends"
+print(max(s))
+s
+s = "Hello Hello Hello"
+print(s.replace("He", "Fo"))
+Follo Follo Follo
+s = "The world is beautiful"
+
+print(s.title())
+The World Is Beautiful
+s = "hEllO WorLD"
+print(s.swapcase())
+HeLLo wORld
+s = "abc, def, ghi, jkl"
+print(s.split(','))
+['abc', ' def', ' ghi', ' jkl']
+ch = 'R'
+print(ord(ch))
+82
+ch = 82
+print(chr(ch))
+R
+print(chr(122))
+z
+print(ord('p'))
+112
+for i in range(1, 7):
+    ch = 'A'
+    print()
+    for j in range(1, i+1):
+        print(ch, end="")
+        ch = chr(ord(ch)+1)
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCDEF
+s = "abc, def, ghi, jkl"
+print('_'.join(['abc', 'def', 'ghi', 'jkl']))
+abc_def_ghi_jkl
+s = "hello%"
+print(s.isidentifier())
+False
+s = 'Hello World'
+print(list(enumerate(s)))
+[(0, 'H'), (1, 'e'), (2, 'l'), (3, 'l'), (4, 'o'), (5, ' '), (6, 'W'), (7, 'o'), (8, 'r'), (9, 'l'), (10, 'd')]
+s = "welcome to the world of python"
+s2 = "the"
+if s2 in s:
+    print("Found")
+else:
+    print("Not found")
+Found
+'u' in "starts"
+False
+Comparing Strings
+"a" <> "A"
+  File "<ipython-input-93-fc49e0c0cad4>", line 1
+    "a" <> "A"
+         ^
+SyntaxError: invalid syntax
+"TED" == "ted"
+False
+# WAP using while loop to iterate a given string
+
+s = "Welcome to Python"
+i = 0
+while i < len(s):
+    print(s[i], end="")
+    i+=1
+Welcome to Python
+# WAP that encrypts a message by adding a key value to every character
+
+s = input("Enter the string: ")
+key = int(input("Enter the encryption key: "))
+
+new_s = ""
+for i in s:
+    new_s += chr(ord(i)+key)
+print(new_s)
+Enter the string: HelloWorld
+Enter the encryption key: 3
+KhoorZruog
+# WAP that uses split function to split a multi-line string 
+
+s = '''Dear Students, I am pleased to inform you that, there is a workshop on Python in college tomorrow.
+Everyone should come and there will also be a quiz in Python, whosoever wins will win a gold medal.'''
+
+print(s.split('\n'))
+['Dear Students, I am pleased to inform you that, there is a workshop on Python in college tomorrow.', 'Everyone should come and there will also be a quiz in Python, whosoever wins will win a gold medal.']
+# WAP that accepts a string from user and re-displays the same string after removing vowels
+
+vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+s = input("Enter the string: ")
+for i in s:
+    if i not in vowels:
+        print(i, end="")
+Enter the string: Shuchika Sharma
+Shchk Shrm
+ 
+ 
+ 
+ 

@@ -1,0 +1,98 @@
+
+STRING MODULE
+# WAP that uses different methods like upper, lower, split, join, count, replace, find on string object
+
+s = "Welcome to the world of Python"
+print(s.upper())
+print(s.lower())
+a = s.split(' ')
+print(a)
+print(','.join(a))
+print(s.count('t'))
+print(s.replace('the', ':'))
+print(s.find('of'))
+WELCOME TO THE WORLD OF PYTHON
+welcome to the world of python
+['Welcome', 'to', 'the', 'world', 'of', 'Python']
+Welcome,to,the,world,of,Python
+3
+Welcome to : world of Python
+21
+import string
+print(string.ascii_letters)
+print(dir(string))
+print(type(string.digits))
+print(string.find(string.ascii_lowercase,'g') != -1)
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+['Formatter', 'Template', '_ChainMap', '_TemplateMetaclass', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_re', '_string', 'ascii_letters', 'ascii_lowercase', 'ascii_uppercase', 'capwords', 'digits', 'hexdigits', 'octdigits', 'printable', 'punctuation', 'whitespace']
+<class 'str'>
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-37-69ef73ffbafb> in <module>
+      3 print(dir(string))
+      4 print(type(string.digits))
+----> 5 print(string.ascii_find(string.ascii_lowercase,'g') != -1)
+
+AttributeError: module 'string' has no attribute 'ascii_find'
+print('g' in string.ascii_lowercase)
+True
+ch = 'g'
+print('a' <= ch <= 'z')
+True
+Regular Expressions
+import re
+str1 = "She sells sea shells on the sea shore"
+pattern1 = "sells"
+if re.match(pattern1, str1):
+    print("Match found!")
+else:
+    print("Match not found!")
+Match not found!
+pattern2 = "She"
+if re.match(pattern2, str1):
+    print("Match found!")
+else:
+    print("Match not found!")
+Match found!
+pattern = "sea"
+if re.search(pattern, str1):
+    print("Match found!")
+else:
+    print("Match not found!")
+Match found!
+patern = "sea"
+repl = "ocean"
+re.sub(patern, repl, str1, 1)
+# Only 1 occurrence was replaced as we provided max = 1
+'She sells ocean shells on the sea shore'
+pattern = r"[a-zA-Z]+\d+" ""
+# Patterns that begin with one or more characters followed by space and followed by one or more digits
+matches = re.findall(pattern, "LXI2013,VXI2015,VDI20104,Maruti Suzuki Cars in India")
+for match in matches:
+    print(match, end=" ")
+LXI2013 VXI2015 VDI20104 
+pattern = r"[a-z A-Z]+\d+" ""
+# Patterns that begin with one or more characters followed by space and followed by one or more digits
+matches = re.finditer(pattern, "LXI 2013,VXI 2015,VDI 20104,Maruti Suzuki Cars available with us")
+for match in matches:
+    print(match.start(), match.end(), match.span())
+0 8 (0, 8)
+9 17 (9, 17)
+18 27 (18, 27)
+# WAP that checks if the string has atleast one vowel
+
+import re
+vowels = r"[aeiouAEIOU]"
+str1 = "Shuchika Sharma"
+# str1 = "Shchk Shrm"
+
+if re.search(vowels, str1):
+    print("Found")
+else:
+    print("Not found")
+print(re.search(vowels, str1))
+Found
+<re.Match object; span=(2, 3), match='u'>
+ 
+ 
+ 

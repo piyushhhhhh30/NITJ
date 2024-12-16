@@ -1,0 +1,269 @@
+
+SETS
+# SETS
+
+thisset = {"apple", "banana", "cherry"}
+print(type(thisset))
+
+print("banana" in thisset)
+<class 'set'>
+True
+# Add items in set
+thisset.add("orange")
+print(thisset)
+{'orange', 'apple', 'banana', 'cherry'}
+# Add items from another set into this set
+tropical = {"mango", "papaya"}
+thisset.update(tropical)
+print(thisset)
+
+# Check why this is the order after concatenation
+{'apple', 'banana', 'mango', 'orange', 'papaya', 'cherry'}
+# Add elements of a list to the set
+l1 = ["mango2", "papaya2"]
+thisset.update(l1)
+print(thisset)
+{'apple', 'banana', 'mango', 'papaya2', 'orange', 'papaya', 'mango2', 'cherry'}
+# Remove item
+
+thisset.remove("mango2")
+print(thisset)
+{'apple', 'banana', 'mango', 'papaya2', 'orange', 'papaya', 'cherry'}
+# Remove item using discard() --- It will not raise an error if item does not exist in the set. remove() raises an error if it does not find the element to remove
+
+thisset.discard("banana")
+print(thisset)
+{'apple', 'mango', 'papaya2', 'orange', 'papaya', 'cherry'}
+POP function --- You will not know which item will be popped
+
+CLEAR Function --- Empties the set
+
+DEL function --- Deletes the set completely Usage - del thisset
+
+JOIN SETS --- union() and update() intersection() --- keeps duplicates difference() --- keeps items from first set that are not in other sets symmetric_difference() --- keeps all items except duplicates
+
+You can also use | operator instead of union. Example - set3 = set1.union(set2) set3 = set1 | set2
+
+You can also use set5 = set1.union(set2, set3, set4) to join multiple sets OR, you can write --- set5 = set1 | set2 | set3 | set4
+
+Difference between union() and | --- Union will join set with tuple, but | will join only set with set
+
+In union() the updates will be stored in set1 However, in intersection(), you will have to create a new set and store the result in it
+
+YOu can use intersection_update() to store the intersection results in set1
+
+You can also use & operator instead of intersection.
+
+# Join sets that contains the values belwo and see what is considered duplicates
+
+set1 = {"apple", 1, "banana", 0, "cherry"}
+set2 = {False, "google", 1, "apple", 2, True}
+
+print(set2)
+print(len(set2))
+set3 = set1.intersection(set2)
+print(set3)
+{False, 1, 2, 'apple', 'google'}
+5
+{False, 1, 'apple'}
+# Difference example - 
+set3 = set1 - set2
+print(set3)
+{'banana', 'cherry'}
+# Symmteric Difference --- You can also use ^ operator
+# PYTHON NOTES FOR PROFESSIONALS - Data sciene and ML bootcamp --- goalkicker.com
+print({1,2}.issuperset({1,2,3}))
+False
+print({1,2}.isdisjoint({3,4}))
+True
+# Get unique elemets of a list using sets
+
+restaurants = ["McDonals", "Burger King", "McDonals"]
+print(set(restaurants))
+{'Burger King', 'McDonals'}
+# Set of sets
+{{1,2}, {2,3}}
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-51-93fc898628e9> in <module>
+      1 # Set of sets
+----> 2 {{1,2}, {2,3}}
+
+TypeError: unhashable type: 'set'
+# Instead, use frozenset
+
+{frozenset({1,2}), frozenset({3,4})}
+{frozenset({3, 4}), frozenset({1, 2})}
+# a.issubset(b) --- OR use  a <= b
+
+
+# and a.issuperset(b)  --- OR use  a>=b
+# Length function
+# WAP that creates 2 sets squares and cubes in range 1 to 10. Demonstrate the use of update, pop, remove and clear function
+
+set1 = set()
+set2 = set()
+for i in range(1, 11):
+    set1.add(i*i)
+    set2.add(i*i*i)
+print("Set1 after adding squares: ", set1)
+print("Set2 after adding cubes: ", set2)
+
+print("\nDemonstrating the use of update function: ")
+set3 = {"mango"}
+set1.update(set3)
+print("Set1 after update: ", set1)
+
+print("\nDemonstrating the use of pop function: ")
+print(set1.pop())
+
+print("\nDemonstrating the use of remove function: ")
+set1.remove("mango")
+print(set1)
+
+print("\nDemonstrating the use of clear function: ")
+set1.clear()
+print(set1)
+Set1 after adding squares:  {64, 1, 4, 36, 100, 9, 16, 49, 81, 25}
+Set2 after adding cubes:  {64, 1, 512, 8, 1000, 343, 216, 729, 27, 125}
+
+Demonstrating the use of update function: 
+Set1 after update:  {64, 1, 4, 36, 100, 'mango', 9, 16, 49, 81, 25}
+
+Demonstrating the use of pop function: 
+64
+
+Demonstrating the use of remove function: 
+{1, 4, 36, 100, 9, 16, 49, 81, 25}
+
+Demonstrating the use of clear function: 
+set()
+# Create set using list comprehension
+
+set4 = {i*i*i for i in range(1,10)}
+print(set4)
+print(type(set4))
+{64, 1, 512, 8, 343, 216, 729, 27, 125}
+<class 'set'>
+# WAP that creates two sets one of even numbers in the range 1 to 10 and the other as all composite numbers in range 1 to 20
+# Demonstrate the use of all(), issuperset(), len() and sum() on the sets.
+
+set1 = {i for i in range(1, 11) if i % 2 == 0 }
+print("Set of even numbers: ",set1)
+
+set2 = set()
+
+c = 0
+for i in range(2, 21):
+    for j in range(2, i):
+        if i%j ==0:
+            c+=1
+    if c!=0:
+        set2.add(i)
+    c = 0
+print("Set of composite numbers: ", set2)
+
+# all() function returns True if all elements are True, else returns False
+print("\nDemonstrating use of all() function: ")
+print(all(set1))
+
+set1.remove(2)
+print("\nRemoving '2' from set1: ", set1)
+
+print("\nDemonstrating use of issuperset() function: ")
+print(set2.issuperset(set1))
+
+print("\nDemonstrating use of len() function: ")
+print(len(set2))
+
+print("\nDemonstrating use of sum() function: ")
+print("Sum of elements of set1: ", sum(set1))
+Set of even numbers:  {2, 4, 6, 8, 10}
+Set of composite numbers:  {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20}
+
+Demonstrating use of all() function: 
+True
+
+Removing '2' from set1:  {4, 6, 8, 10}
+
+Demonstrating use of issuperset() function: 
+True
+
+Demonstrating use of len() function: 
+11
+
+Demonstrating use of sum() function: 
+Sum of elements of set1:  28
+NUMPY
+import numpy as np
+print(np.__version__)
+1.18.1
+# Numpy ndarray
+
+arr = np.array([1,2,3,4,5])
+print(arr)
+print(type(arr))
+[1 2 3 4 5]
+<class 'numpy.ndarray'>
+# Create empty numpy array
+a1 = np.array([])
+print(a1)
+print(type(a1))
+[]
+<class 'numpy.ndarray'>
+# O dimensional (0-D) array
+
+a1 = np.array(42)
+print(a1)
+42
+# 1-D array
+
+a1 = np.array([1,2,3])
+print(a1)
+[1 2 3]
+# 2-D array
+a1 = np.array([
+    [1,2,3], 
+    [4,5,6]
+])
+print(a1)
+[[1 2 3]
+ [4 5 6]]
+# 3-D array
+
+a1 = np.array([
+    [
+        [1,2,3], 
+        [4,5,6]
+    ],
+    [
+        [1,2,1], 
+        [4,5,1]
+    ]
+])
+print(a1)
+[[[1 2 3]
+  [4 5 6]]
+
+ [[1 2 1]
+  [4 5 1]]]
+# Check number of dimensions of array
+
+print(a1.ndim)
+3
+# Create an array with 5 dim and verify it has 5 dim
+
+a2 = np.array([1,2,3,4], ndmin=5)
+print(a2)
+print(a2.ndim)
+[[[[[1 2 3 4]]]]]
+5
+a2 = np.array([[1,2,3,4], [4,5,6,7]])
+print(a2[0,1])
+2
+a3 = np.array([[[1,2,3], [4,5,6]], [[7,8,9], [10,11,12]]])
+print(a3[0,1,2])
+6
+ 
+ 
+ 

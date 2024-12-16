@@ -1,0 +1,298 @@
+
+# Accessing values in a Dictionary
+dict1 = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print(dict1['Name'])
+print(dict1['Age'])
+Zara
+7
+# Updating a dict
+
+dict1['Age'] = 8
+
+print(dict1)
+{'Name': 'Zara', 'Age': 8, 'Class': 'First'}
+# Add a new entry
+
+dict1['School'] = 'DPS'
+
+print(dict1)
+{'Name': 'Zara', 'Age': 8, 'Class': 'First', 'School': 'DPS'}
+# Delete entries
+
+del dict1['Name']
+
+print(dict1)
+{'Age': 8, 'Class': 'First', 'School': 'DPS'}
+# Clear whole dict
+
+dict1.clear()
+
+print(dict1)
+{}
+# Delete whole dict
+
+del dict1
+print(dict1)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-12-a1268cd00805> in <module>
+      2 
+      3 del dict1
+----> 4 print(dict1)
+
+NameError: name 'dict1' is not defined
+Properties of dict
+# Multiple keys with same name are not allowed. If there are such keys, then one with last assignment is considered
+
+dict1 = {'Name': 'Zara', 'Age': 7, 'Class': 'First', 'Age': 100}
+print(dict1['Age'])
+100
+DICT METHODS
+# Dict length
+
+print(len(dict1))
+3
+# Dict to string
+
+a = str(dict1)
+print(a)
+print(type(a))
+{'Name': 'Zara', 'Age': 100, 'Class': 'First'}
+<class 'str'>
+# Dict copy() returns a SHALLOW copy of the dictionary
+dict2 = dict1.copy()
+print(dict2)
+{'Name': 'Zara', 'Age': 100, 'Class': 'First'}
+# Fromkeys() creates a new dict with keys from seq and values set to value
+
+seq = {'Name', 'Age', 'Gender'}
+dict2 = dict1.fromkeys(seq)
+print(dict2)
+
+dict2 = dict1.fromkeys(seq,10)
+print(dict2)
+{'Gender': None, 'Age': None, 'Name': None}
+{'Gender': 10, 'Age': 10, 'Name': 10}
+# get() method - returns value for given key
+print(dict1.get('Name'))
+Zara
+# items() - returns a list of dict's ket-value tuple pairs
+print(dict1.items())
+dict_items([('Name', 'Zara'), ('Age', 100), ('Class', 'First')])
+# setdefault() - similar to get() but will set key=default id key is not already there in dict
+# Syntax - dict.setdefault(key, default=None)
+
+dict1.setdefault('Age', None)
+dict1.setdefault('Sex1', 'Male')
+print(dict1)
+{'Name': 'Zara', 'Age': 100, 'Class': 'First', 'Sex1': 'Male'}
+# Update() - adds dict2's contents to dict
+print(dict1)
+dict2 = {'Gender': 'Female', 'Senior_Citizen': 'Yes'}
+print(dict2)
+dict1.update(dict2)
+print(dict1)
+{'Name': 'Zara', 'Age': 100, 'Class': 'First', 'Sex1': 'Male'}
+{'Gender': 'Female', 'Senior_Citizen': 'Yes'}
+{'Name': 'Zara', 'Age': 100, 'Class': 'First', 'Sex1': 'Male', 'Gender': 'Female', 'Senior_Citizen': 'Yes'}
+# values() method - returns a list of all the values availale in given dict
+print(dict1.values())
+dict_values(['Zara', 100, 'First', 'Male', 'Female', 'Yes'])
+# WAP to merge two dictionaries with a third one
+
+a = {'Name': 'Zara', 'Age': 10}
+b = {'Gender': 'Female'}
+c = {'Senior_Citizen': 'No'}
+
+c.update(b)
+c.update(a)
+print(c)
+{'Senior_Citizen': 'No', 'Gender': 'Female', 'Name': 'Zara', 'Age': 10}
+dict1 = {"a": "time", "b": "money", "c": "value"}
+
+for key, values in dict1.items():
+    print(key, " ", values)
+
+print()
+for i in dict1.keys():
+    print(i)
+for i in dict1.values():
+    print(i)
+a   time
+b   money
+c   value
+
+a
+b
+c
+time
+money
+value
+# Sort dictionary by values
+
+dict1 = {"a": 23, "b": 91038, "c": 1, "d": 20, "e": 55}
+
+# print(sorted(dict1, key = dict1.values))
+print(dict1)
+
+ls = sorted(dict1.values())
+print(ls)
+dict2 = {}
+for i in ls:
+    for j in dict1.keys():
+        if dict1.get(j) == i:
+            dict2[j] = i
+print(dict2)
+{'a': 23, 'b': 91038, 'c': 1, 'd': 20, 'e': 55}
+[1, 20, 23, 55, 91038]
+{'c': 1, 'd': 20, 'a': 23, 'e': 55, 'b': 91038}
+# Count number of digits in input using while loop
+
+a = 8139790800
+
+c = 0
+while( a >=1 ):
+    c+=1
+    a = a/10
+print(c)
+10
+# Armstrong number 153 = 1^3+5^3+3^3. Print all armstrong nos. between 50 and 800
+
+def check_armstrong(n):
+    s = 0
+    a1 = n
+    a2 = n
+    c = 0
+    
+    # Count number of digits
+    while( a1 >=1 ):
+        c+=1
+        a1 = a1/10
+    
+    # Find sum
+    while(a2 >= 1):
+        s += (a2%10)**c
+        a2 = int(a2/10)
+    if s==n:
+        return True
+    else:
+        return False
+
+for i in range(50, 10000):
+    if check_armstrong(i):
+        print(i)
+153
+370
+371
+407
+1634
+8208
+9474
+# Check anagrams
+
+inp1 = "ABCD"
+inp2 = "DBAC"
+ls1 = sorted(inp1)
+ls2 = sorted(inp2)
+if str(ls1) == str(ls2):
+    print("They are anagrams")
+else:
+    print("Not anagrams")
+They are anagrams
+# Print all permutations of a string
+
+def generate_permutations(string):
+    if len(string) == 1:
+        return [string]
+ 
+    permutations = []
+    for i in range(len(string)):
+        fixed_char = string[i]
+        remaining_chars = string[:i] + string[i+1:]
+        for perm in generate_permutations(remaining_chars):
+            permutations.append(fixed_char + perm)
+
+ 
+    return permutations
+ 
+string ='GEEK'
+ 
+permutations_list = generate_permutations(string)
+z=set(permutations_list)
+ 
+for perm in z:
+    print(perm)
+EKGE
+KGEE
+GEKE
+EKEG
+EGEK
+EEGK
+EGKE
+GKEE
+KEGE
+EEKG
+KEEG
+GEEK
+a = "John000Doe000123"
+b = list(a)
+ls = a.split('0')
+print(ls)
+while ('' in ls):
+    ls.remove('')
+print(ls)
+['John', '', '', 'Doe', '', '', '123']
+['John', 'Doe', '123']
+def are_anagrams(num1, num2):
+# Convert both integers to strings, then sort their digits
+    return sorted(str(num1)) == sorted(str(num2))
+# Input
+num1 = int(input("Enter the first integer: ")) #123
+num2 = int(input("Enter the second integer: ")) #321
+# Output
+if are_anagrams(num1, num2):
+    print("The numbers are anagrams.")
+else:
+    print("The numbers are not anagrams.")
+Enter the first integer: 23456
+Enter the second integer: 32456
+The numbers are anagrams.
+l1 = ['S001', 'S002', 'S003', 'S004']
+l2 = ['Adina Park', 'Leyton Marsh', 'Duncan Boyle', 'Saim Richards']
+l3 = [85, 98, 89, 92]
+dict1 = {}
+for i in range(4):
+    dict1.update( {l1[i]: {l2[i]: l3[i]}})
+print(dict1)
+{'S001': {'Adina Park': 85}, 'S002': {'Leyton Marsh': 98}, 'S003': {'Duncan Boyle': 89}, 'S004': {'Saim Richards': 92}}
+def removeDuplicates(str1):
+    # code here
+    dict1 = {}
+    res = ""
+    for i in str1:
+        if i not in dict1:
+            res +=i
+            dict1[i] = 1
+    return res
+
+print(removeDuplicates("geEksforGEeks"))
+geEksforG
+def func(str1):
+    # code here 
+    # code here 
+    s2 = str1.split(".")
+    s2.reverse()
+    s3 = '.'.join(s2)
+    print(s3)
+
+func("i.like.this.program.very.much")
+much.very.program.this.like.i
+Tuple1 = ("A", 1, "B", 2, "C", 3)
+
+c = 0
+for i in Tuple1:
+    c +=1
+print(c)
+6
+ 
